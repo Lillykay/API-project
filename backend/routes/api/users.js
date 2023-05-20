@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const { User } = require("../../db/models");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const { setTokenCookie } = require("../../utils/auth");
 const validateSignup = [
   check("email")
@@ -22,9 +22,10 @@ const validateSignup = [
   handleValidationErrors,
 ];
 // Sign up
-router.post("", validateSignup, async (req, res) => {
+router.post("/", validateSignup, async (req, res) => {
   const { firstName, lastName, email, password, username } = req.body;
   const hashedPassword = bcrypt.hashSync(password);
+  console.log(hashedPassword);
   const user = await User.create({
     firstName,
     lastName,
