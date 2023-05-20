@@ -22,7 +22,6 @@ const {
   validEvent,
 } = require("../../utils/auth");
 const { validateGroupEdit } = require("../../utils/custom-validations");
-const { LIMIT_ATTACHED } = require("sqlite3");
 const event = require("../../db/models/event");
 const returnMsg = {};
 
