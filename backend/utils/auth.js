@@ -88,10 +88,10 @@ const validGroup = ({ name, about, type, private, city, state }) => {
   if (!state) {
     errRes.errors.state = "State is required";
   }
-  if (!name || name.length <= 60) {
+  if (!name || name.length > 60) {
     errRes.errors.name = "Name must be 60 characters or less";
   }
-  if (!about || about.length >= 50) {
+  if (!about || about.length < 50) {
     errRes.errors.about = "About must be 50 characters or more";
   }
 
