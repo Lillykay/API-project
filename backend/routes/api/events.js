@@ -16,7 +16,7 @@ const {
 } = require("../../utils/auth");
 const { checkIfExist, validQuery } = require("../../utils/validation");
 const returnMsg = {};
-
+//GET ALL EVENTS
 router.get("/", async (req, res) => {
   const options = validQuery(req.body);
   const events = await Event.findAll({
@@ -69,13 +69,7 @@ router.post("/:eventId/images", requireAuth, async (req, res) => {
       groupId: event.groupId,
     },
   });
-  // const isCoHost = await Event.findByPk({
-  //   where: {
-  //     url,
-  //       eventId,
-  //       preview,
-  //   }
-  // })
+
   if (user.status === "co-host" || userId === event.organizerId) {
     const createdImg = await EventImage.create({
       url,

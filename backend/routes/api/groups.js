@@ -108,9 +108,7 @@ router.get("/:groupId", async (req, res) => {
     ],
   });
 
-  if (!group) {
-    return res, "Group";
-  }
+  checkIfExist(group);
 
   const groupPojo = group.toJSON();
 
@@ -319,7 +317,17 @@ router.post("/:groupId/events", requireAuth, async (req, res) => {
     groupId,
     ...validEvent(req.body),
   });
-  res.json(event);
+  res.json({
+    id: event.id,
+    groupId: event.groupId,
+    venueId: event.venueId,
+    name: event.name,
+    capacity: event.capacity,
+    price: event.price,
+    description: event.description,
+    startDate: event.startDate,
+    endDate: event.endDate,
+  });
 });
 
 //MEMBERSHIP//
@@ -398,11 +406,6 @@ router.put("/:groupId/membership", requireAuth, async (req, res) => {
   const { memberId, status } = req.body;
   const group = await Group.findByPk(groupId);
 
-  // if (!group) {
-  //   returnMsg.message = "Group couldn't be found";
-  //   returnMsg.statusCode = 404;
-  //   return res.status(404).json(returnMsg);
-  // }
   checkIfExist(group);
 
   const user = await Membership.findOne({
@@ -419,12 +422,6 @@ router.put("/:groupId/membership", requireAuth, async (req, res) => {
     },
   });
 
-  // if (!member) {
-  //   returnMsg.message =
-  //     "Membership between the user and the group does not exist";
-  //   returnMsg.statusCode = 404;
-  //   return res.status(403).json(returnMsg);
-  // }
   checkIfExist(
     member,
     "Membership between the user and the group does not exist"

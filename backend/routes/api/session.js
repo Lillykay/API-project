@@ -19,26 +19,14 @@ const validateLogin = [
     .withMessage("Please provide a password."),
   handleValidationErrors,
 ];
-// Log in
-router.post("/", async (req, res, next) => {
-  let { email, password, username } = req.body;
-  email = email ?? "";
-  username = username ?? "";
-  if (!email && !username) {
-    const err = new Error("Bad Request");
-    err.status = 400;
-    err.title = "Login failed";
-    err.errors = {
-      email: "Email is required",
-      password: "Password is required",
-    };
-    return next(err);
-  }
+router.post("/", validateLogin, async (req, res, next) => {
+  const { credential, password } = req.body;
+
   const user = await User.unscoped().findOne({
     where: {
       [Op.or]: {
-        username,
-        email,
+        username: credential,
+        email: credential,
       },
     },
   });
@@ -65,7 +53,6 @@ router.post("/", async (req, res, next) => {
     user: safeUser,
   });
 });
-
 // Log out
 router.delete("/", (_req, res) => {
   res.clearCookie("token");
