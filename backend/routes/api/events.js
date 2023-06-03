@@ -12,7 +12,7 @@ const {
 const {
   restoreUser,
   requireAuth,
-  requireAuthResponse,
+  checkAuthorization,
 } = require("../../utils/auth");
 const { checkIfExist, validQuery } = require("../../utils/validation");
 const returnMsg = {};
@@ -281,7 +281,7 @@ router.delete("/:eventId/attendance", requireAuth, async (req, res) => {
   checkIfExist(event, "Event couldn't be found");
   const isValidUser =
     currUserId === userId || currUserId === event.Group.organizerId;
-  requireAuthResponse(
+  checkAuthorization(
     isValidUser,
     "Only the User or organizer may delete an Attendance"
   );

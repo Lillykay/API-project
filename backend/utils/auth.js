@@ -70,7 +70,7 @@ const requireAuth = function (req, _res, next) {
   return next(err);
 };
 
-const requireAuthResponse = (condition, message = "Forbidden") => {
+const checkAuthorization = (condition, message = "Forbidden") => {
   if (!condition) {
     throw {
       status: 403,
@@ -219,7 +219,7 @@ module.exports = {
   setTokenCookie,
   restoreUser,
   requireAuth,
-  requireAuthResponse,
+  checkAuthorization,
   validGroup,
   validVenue,
   validEvent,
