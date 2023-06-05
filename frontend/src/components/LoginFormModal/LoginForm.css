@@ -1,0 +1,11 @@
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #f11a21;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 93%;
+  align-items: center;
+}
