@@ -1,7 +1,8 @@
 h1 {
   font-size: 24px;
   font-weight: bold;
-  color: #f11a21;
+  color: #d80a94;
+  border: #d80a94;
 }
 form {
   display: flex;

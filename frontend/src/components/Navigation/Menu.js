@@ -40,40 +40,39 @@ function Menu({ user }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
-    // <>
-    //   <button onClick={openMenu}>
-    //     <i className="fas fa-user-circle" />
-    //   </button>
-    //   <ul className={ulClassName} ref={ulRef}>
-    //     {user ? (
-    //       <>
-    //         <li>{user.username}</li>
-    //         <li>
-    //           {user.firstName} {user.lastName}
-    //         </li>
-    //         <li>{user.email}</li>
-    //         <li>
-    //           <button onClick={logout}>Log Out</button>
-    //         </li>
-    //       </>
-    //     ) : (
-    <div id="Menu">
-      <OpenModalMenuItem
-        itemText="Log In"
-        onItemClick={closeMenu}
-        modalComponent={<LoginFormModal />}
-      />
-      <OpenModalMenuItem
-        itemText="Sign Up"
-        onItemClick={closeMenu}
-        modalComponent={<SignupFormModal />}
-      />
-    </div>
+    <>
+      <ul className={ulClassName} ref={ulRef}>
+        {user ? (
+          <>
+            <button onClick={openMenu}>
+              <i className="fas fa-user-circle" />
+            </button>
+            <li>{user.username}</li>
+            <li>
+              {user.firstName} {user.lastName}
+            </li>
+            <li>{user.email}</li>
+            <li>
+              <button onClick={logout}>Log Out</button>
+            </li>
+          </>
+        ) : (
+          <div id="Menu">
+            <OpenModalMenuItem
+              itemText="Log In"
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
+            />
+            <OpenModalMenuItem
+              itemText="Sign Up"
+              onItemClick={closeMenu}
+              modalComponent={<SignupFormModal />}
+            />
+          </div>
+        )}
+      </ul>
+    </>
   );
 }
-//       </ul>
-//     </>
-//   );
-// }
 
 export default Menu;

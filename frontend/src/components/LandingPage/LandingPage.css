@@ -1,0 +1,42 @@
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 54%;
+  gap: 2rem;
+  font-size: smaller;
+  margin: 8rem auto;
+}
+
+.main-content-meetup-works {
+  text-align: center;
+  margin-top: 3rem;
+  grid-column: span 2;
+}
+
+.main-content-cards {
+  grid-column: span 2;
+}
+
+.main-content-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.main-content-cards-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content-join-meetup-btn {
+  padding: 0.3rem 0.6rem;
+  background-color: hsl(188, 91%, 29%);
+  color: #fff;
+  border: 1px solid black;
+  box-shadow: 2px 1px 0 0 black;
+  align-items: center;
+}
+h2 {
+  color: purple;
+}

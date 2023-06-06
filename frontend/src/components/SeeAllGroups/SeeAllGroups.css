@@ -1,0 +1,83 @@
+.title-container {
+  display: flex;
+}
+
+.title-container a {
+  color: #333;
+  text-decoration: none;
+  margin-right: 20px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.groups-view {
+  margin: 20px;
+}
+
+.group-event-selection-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title-container a:hover {
+  color: #00a2c7;
+}
+
+.groups-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.group-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.group-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.group-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.group-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.group-card .group-info {
+  display: flex;
+  align-items: center;
+}
+
+.group-card .group-info .group-location {
+  margin-right: 10px;
+  font-size: 12px;
+  color: #888;
+}
+
+.group-card .group-info .group-events {
+  font-size: 12px;
+  color: #888;
+}
+
+.group-card .group-info .dot {
+  margin: 0 5px;
+  font-size: 12px;
+  color: #888;
+}
+
+.group-card .group-info .group-type {
+  font-size: 12px;
+  color: #888;
+}
